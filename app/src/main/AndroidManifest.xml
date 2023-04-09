@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EBAYAR">
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.GuidesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.DashboardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

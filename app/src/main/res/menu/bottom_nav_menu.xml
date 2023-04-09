@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_dashboard"
+        android:title="Home"
+        android:icon="@drawable/ic_dash2"/>
+    <item android:id="@+id/nav_statistic"
+        android:title="Statistic"
+        android:icon="@drawable/ic_icon_stats"/>
+    <item android:id="@+id/placeholder"
+        android:title=""/>
+    <item android:id="@+id/nav_notification"
+        android:title="Notification"
+        android:icon="@drawable/ic_notif"/>
+    <item android:id="@+id/nav_account"
+        android:title="Account"
+        android:icon="@drawable/ic_akun"/>
+</menu>
