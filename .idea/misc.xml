@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/EBAYAR/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/drawable/back_color_gradient.xml" value="0.164" />
+        <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/drawable/ic_background.xml" value="0.2775" />
+        <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/drawable/ic_group_773.xml" value="0.2775" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/drawable/ic_listrik.xml" value="0.3675" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/drawable/ic_logo.xml" value="0.238" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/drawable/ic_scan.xml" value="0.2265" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/drawable/payment_list.xml" value="0.3675" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/drawable/service.xml" value="0.3675" />
-        <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
+        <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/layout/activity_guides.xml" value="0.25" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27291666666666664" />

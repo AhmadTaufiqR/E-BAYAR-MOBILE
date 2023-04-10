@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EBAYAR">
+<!--        <activity-->
+<!--            android:name=".Activities.GuidesActivity"-->
+<!--            android:exported="false" />-->
         <activity
-            android:name=".Activities.GuidesActivity"
-            android:exported="false" />
-        <activity
+            android:theme="@style/Theme.EBAYAR.BlackColorIcon"
             android:name=".Activities.DashboardActivity"
             android:exported="true">
             <intent-filter>
