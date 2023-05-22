@@ -1,19 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_logosplash"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/didact_gothic"
+            android:text="E-BAYAR"
+            android:textColor="#010C42"
+            android:textSize="20dp"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:background="@drawable/bg_form"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/didact_gothic"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="5dp"
+                android:hint="Your Email"
+                android:textSize="15dp"
+                android:drawableStart="@drawable/email"/>
+
+            <EditText
+                android:background="@drawable/bg_form"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/didact_gothic"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="5dp"
+                android:hint="Password"
+                android:textSize="15dp"
+                android:drawableStart="@drawable/password"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/teal_700"/>
+
+<!--            <TextView-->
+<!--                android:layout_width="130dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="240dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:text="Forgot Password ?"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/pass"-->
+<!--                app:layout_constraintHorizontal_blass="1"-->
+<!--                app:layout_constraintVertical_blass="0"-->
+<!--                app:layout_contraintBottom_toBottomOf="parent"/>-->
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="#32af85">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#32af85"
+                android:text="LOGIN"
+                android:textColor="#fff"
+                android:padding="15dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/didact_gothic" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/didact_gothic"
+            android:text="or login With:"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:elevation="0dp"
+                app:cardCornerRadius="3dp"
+                android:foreground="?android:attr/selectableItemBackground">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_footer">
+
+                    <ImageView
+                        android:id="@+id/facebook"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/fb"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/facebook"
+                        android:text="Facebook" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:elevation="0dp"
+                app:cardCornerRadius="3dp"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_footer">
+
+                    <ImageView
+                        android:id="@+id/google"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/google" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Google"
+                        android:layout_toRightOf="@+id/google"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"/>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

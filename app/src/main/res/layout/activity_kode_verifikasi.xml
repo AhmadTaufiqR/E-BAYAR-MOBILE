@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/lengkungan"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_marginTop="80dp"
+            android:paddingHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_bold"
+            android:text="RESET"
+            android:textColor="@color/white"
+            android:textSize="30dp">
+        </TextView>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_bold"
+            android:text="PASSWORD"
+            android:textColor="@color/white"
+            android:textSize="30dp">
+        </TextView>
+    </LinearLayout>
+
+    <TextView
+        android:gravity="center"
+        android:fontFamily="@font/dm_sans_bold"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:text="Kode Verifikasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <Button
+            android:textSize="20sp"
+            android:text="Lanjutkan"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_masuk"
+            android:layout_width="268dp"
+            android:layout_height="wrap_content">
+        </Button>
+
+    </LinearLayout>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/lengkungan_bawah"-->
+<!--        android:scaleType="fitXY" />-->
+<!--    </LinearLayout>-->
