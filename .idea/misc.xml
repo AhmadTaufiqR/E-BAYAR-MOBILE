@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -18,10 +17,36 @@
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.289" />
         <entry key="..\:/KULIAH/New folder/E-BAYAR/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.289" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/bacground.xml" value="0.1485" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/back_color_gradient.xml" value="0.1" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/background_gradasi.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/background_putih.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/bg_footer.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/bg_form.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/bg_splas.xml" value="0.1385" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/email.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1235" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_bundar.xml" value="0.1385" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_bundar2.xml" value="0.1" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_logo.xml" value="0.1" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_logosplash.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_notif.xml" value="0.1485" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_outline_email_24.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/ic_vector.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/drawable/password.xml" value="0.1505" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/layout/activity_create_password.xml" value="0.14130434782608695" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/layout/activity_dashboard.xml" value="0.12" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/layout/activity_guides.xml" value="0.14130434782608695" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/layout/activity_login.xml" value="0.15489130434782608" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/layout/activity_reset_password.xml" value="0.16666666666666666" />
+        <entry key="..\:/Kuliah Semester 4/Workshoop Mobile Application Native/Project-Kelompok/E-BAYAR-MOBILE/app/src/main/res/layout/activity_splash_screen.xml" value="0.14666666666666667" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
