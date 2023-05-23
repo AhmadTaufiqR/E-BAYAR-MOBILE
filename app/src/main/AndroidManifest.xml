@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.taufiq.e_bayar">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="E-BAYAR"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EBAYAR">
-<!--        <activity-->
-<!--            android:name=".Activities.GuidesActivity"-->
-<!--            android:exported="false" />-->
+        android:theme="@style/Theme.EBAYAR"
+        tools:replace="android:allowBackup">
+
         <activity
-            android:theme="@style/Theme.EBAYAR.BlackColorIcon"
+            android:name=".Activities.DetailUGActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.DetailSPPActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.RiwayatActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activities.DashboardActivity"
             android:exported="true">
             <intent-filter>
