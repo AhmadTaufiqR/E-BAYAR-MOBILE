@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.taufiq.e_bayar"
-        minSdk 23
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -52,4 +52,7 @@ dependencies {
     implementation 'com.midtrans:uikit:2.0.0-SANDBOX'
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
+    implementation 'com.jakewharton.butterknife:10.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
 }

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.taufiq.e_bayar">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -22,14 +23,30 @@
             android:name=".Activities.RiwayatActivity"
             android:exported="true" />
         <activity
+            android:name=".Activities.EditTeleponActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.KodeVerifikasiActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.LupaSandiActivity"
+           android:exported="true" />
+        <activity android:name=".Activities.ResetPasswordActivity"
+            android:exported="true"/>
+<!--        <activity android:name=".Activities.DashboardActivity"-->
+<!--            android:exported="true"/>-->
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:exported="true"/>
+        <activity
             android:name=".Activities.DashboardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.MainActivity" />
     </application>
 
 </manifest>
