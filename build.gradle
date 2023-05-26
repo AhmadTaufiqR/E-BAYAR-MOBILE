@@ -1,7 +1,23 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+<<<<<<< HEAD
+buildscript {
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.15'
+    }
+}// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     id 'com.android.application' version '7.1.2' apply false
     id 'com.android.library' version '7.1.2' apply false
+=======
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+<<<<<<< HEAD
+    id 'com.android.application' version '7.1.2' apply false
+    id 'com.android.library' version '7.1.2' apply false
+=======
+    id 'com.android.application' version '7.4.1' apply false
+    id 'com.android.library' version '7.4.1' apply false
+>>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
+>>>>>>> b002094c47fcd75a25f3f7117dc9b65c3768e99c
 }
 
 task clean(type: Delete) {

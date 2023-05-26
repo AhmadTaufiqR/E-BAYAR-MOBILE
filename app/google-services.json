@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "115469067181",
+    "firebase_url": "https://e-bayar-firebase-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "e-bayar-firebase",
+    "storage_bucket": "e-bayar-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115469067181:android:68206dcd4c604c3162f724",
+        "android_client_info": {
+          "package_name": "com.taufiq.e_bayar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115469067181-3vpt8f01mjv0k67g5qv6e42hqg2a187t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTCDShqW8U6TXghiUk0ED2dZ8cNcqBUMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115469067181-3vpt8f01mjv0k67g5qv6e42hqg2a187t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
