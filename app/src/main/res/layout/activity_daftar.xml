@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.DaftarActivity">
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/lengkungan"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_marginTop="80dp"
+            android:paddingHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_bold"
+            android:text="DAFTAR AKUN"
+            android:textColor="@color/white"
+            android:textSize="20dp">
+        </TextView>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_bold"
+            android:text="PASSWORD"
+            android:textColor="@color/white"
+            android:textSize="20dp">
+        </TextView>
+    </LinearLayout>
+    <TextView
+        android:gravity="center"
+        android:fontFamily="@font/dm_sans_bold"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:text="Daftar Akun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+    <LinearLayout
+        android:paddingHorizontal="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/id_edit_text_username"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/lt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:fontFamily="@font/dm_sans_bold"
+            android:drawableStart="@drawable/username">
+        </EditText>
+        <EditText
+
+            android:id="@+id/id_edit_text_password"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/lt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="    Ulangi Password"
+            android:fontFamily="@font/dm_sans_bold"
+            android:drawableStart="@drawable/password">
+        </EditText>
+
+        <Button
+
+            android:id="@+id/id_btn_regist"
+            android:textSize="20sp"
+            android:text="Lanjutkan"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_width="268dp"
+            android:layout_height="wrap_content">
+
+        </Button>
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/lengkungan_bawah"
+        android:scaleType="fitXY"/>
+
+</LinearLayout>
+
+

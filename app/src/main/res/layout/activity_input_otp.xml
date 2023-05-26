@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActivityInput_otp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/lengkungan"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_marginTop="80dp"
+            android:paddingHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_bold"
+            android:text="RESET"
+            android:textColor="@color/white"
+            android:textSize="20dp">
+        </TextView>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_bold"
+            android:text="PASSWORD"
+            android:textColor="@color/white"
+            android:textSize="20dp">
+        </TextView>
+    </LinearLayout>
+    <TextView
+        android:gravity="center"
+        android:fontFamily="@font/dm_sans_bold"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:text="Kode Verifikasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.goodiebag.pinview.Pinview
+            android:id="@+id/pinview"
+            app:pinBackground="@drawable/bg_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:pinWidth="40dp"
+            app:pinHeight="40dp"
+            app:pinLength="6"
+            app:cursorVisible="false"
+            app:forceKeyboard="true"
+            app:inputType="text"
+            app:password="false"/>
+
+        <Button
+            android:id="@+id/btn_verifikasi"
+            android:textSize="20sp"
+            android:text="Verifikasi"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/background_gradasi"
+            android:layout_width="268dp"
+            android:layout_height="wrap_content">
+
+        </Button>
+
+    </LinearLayout>
+
+</LinearLayout>
