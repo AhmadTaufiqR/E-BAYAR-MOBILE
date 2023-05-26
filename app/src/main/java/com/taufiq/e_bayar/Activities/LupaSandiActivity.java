@@ -1,5 +1,6 @@
 package com.taufiq.e_bayar.Activities;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -37,11 +38,21 @@ public class LupaSandiActivity extends AppCompatActivity {
     // [END declare_auth]
 
     private String mVerificationId;
+=======
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.taufiq.e_bayar.R;
+
+public class LupaSandiActivity extends AppCompatActivity {
+>>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lupa_sandi);
+<<<<<<< HEAD
 
 //        editTextEmail = findViewById(R.id.id_edit_text_nomor_telepon);
 //        btnCari = findViewById(R.id.id_btn_lanjut_lupa_sandi);
@@ -207,5 +218,7 @@ public class LupaSandiActivity extends AppCompatActivity {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+=======
+>>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
     }
 }

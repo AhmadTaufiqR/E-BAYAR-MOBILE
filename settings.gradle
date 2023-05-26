@@ -3,7 +3,10 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
     }
 }
 dependencyResolutionManagement {
@@ -11,8 +14,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+<<<<<<< HEAD
 
         maven { url 'https://jitpack.io' }
+=======
+>>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
     }
 }
 rootProject.name = "E-BAYAR"

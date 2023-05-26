@@ -1,5 +1,6 @@
 package com.taufiq.e_bayar.Activities;
 
+<<<<<<< HEAD
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,20 +23,35 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+=======
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+>>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
 import com.taufiq.e_bayar.R;
 
 public class LoginActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
     TextView txtemail, txtpassword;
     Button btnmasuk;
     String email;
     String password;
 
+=======
+>>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+<<<<<<< HEAD
         txtemail = findViewById(R.id.txtemail);
         txtpassword = findViewById(R.id.txtpassword);
 
@@ -61,4 +77,16 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+=======
+//Temukan button dengan id
+        TextView button = findViewById(R.id.btnlupasandi);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(LoginActivity.this,ResetPasswordActivity.class));
+            }
+        });
+    }
+>>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
 }
