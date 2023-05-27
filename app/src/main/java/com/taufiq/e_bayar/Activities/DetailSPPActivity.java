@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,10 +26,11 @@ import com.midtrans.sdk.corekit.models.snap.CreditCard;
 import com.midtrans.sdk.corekit.models.snap.TransactionResult;
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder;
 import com.taufiq.e_bayar.Adapter.Adapter;
+import com.taufiq.e_bayar.AllMethod.DetailSPPMethod;
 import com.taufiq.e_bayar.BuildConfig;
 import com.taufiq.e_bayar.R;
 import com.taufiq.e_bayar.Request.Services;
-import com.taufiq.e_bayar.Utils.TagihanApi;
+import com.taufiq.e_bayar.Utils.ApiMethod;
 import com.taufiq.e_bayar.Model.spp.DataItem;
 import com.taufiq.e_bayar.Model.spp.Tagihan;
 
@@ -40,17 +43,15 @@ import retrofit2.Response;
 public class DetailSPPActivity extends AppCompatActivity implements TransactionFinishedCallback {
     Toolbar toolbar;
     Button btn;
-    StringBuffer harga;
-    StringBuffer id;
-    StringBuffer jumlah;
-    StringBuffer name;
     RecyclerView recyclerView;
     com.taufiq.e_bayar.Adapter.Adapter myAdapter;
     ArrayList<ItemDetails> itemDetails;
     ArrayList<DataItem> list;
-    TagihanApi tagihanApi;
-    TextView totalamount;
+    ApiMethod tagihanApiMethod;
+    TextView totalamount, detailName;
     int jumlahtotal = 0;
+    static SharedPreferences sharedPreferences;
+    DetailSPPMethod detailSPPMethod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,25 +62,26 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        detailName = findViewById(R.id.namaDetailSpp);
         btn = findViewById(R.id.bayarSpp);
         recyclerView = findViewById(R.id.recyclerSPP);
         totalamount = findViewById(R.id.totalSPP);
+        sharedPreferences = getSharedPreferences("Ebayar", MODE_PRIVATE);
+        String nama = sharedPreferences.getString("nama", "");
+        detailName.setText(nama);
+        detailSPPMethod = new DetailSPPMethod();
         getAllTagihan();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                harga = new StringBuffer();
-                jumlah = new StringBuffer();
-                id = new StringBuffer();
-                name = new StringBuffer();
                 itemDetails = new ArrayList<>();
                 for (DataItem mt : myAdapter.checkedmodelTagihan) {
                     itemDetails.add(new ItemDetails(String.valueOf(mt.getId()), (double) mt.getJumlahBayar(),
                             mt.getQuantity(), String.valueOf(mt.getBulan())));
                     jumlahtotal += mt.getJumlahBayar();
                 }
-                clickPay();
+                detailSPPMethod.clickPay(itemDetails, jumlahtotal, getApplicationContext());
                 jumlahtotal=0;
             }
         });
@@ -87,12 +89,9 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
         makePayment();
     }
 
-
-
-
     private void getAllTagihan() {
-        tagihanApi = Services.getRetrofit().create(TagihanApi.class);
-        Call<Tagihan> call = tagihanApi.getAllTagihan();
+        tagihanApiMethod = Services.getRetrofit().create(ApiMethod.class);
+        Call<Tagihan> call = tagihanApiMethod.getAllTagihan();
         call.enqueue(new Callback<Tagihan>() {
             @Override
             public void onResponse(Call<Tagihan> call, Response<Tagihan> response) {
@@ -140,16 +139,6 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
         finish();
     }
 
-    @NonNull
-    public static CustomerDetails customerDetails(){
-        CustomerDetails cd = new CustomerDetails();
-        cd.setFirstName("Taufiq");
-        cd.setLastName("Ridho");
-        cd.setEmail("email@gmail.com");
-        cd.setPhone("Nope");
-        return cd;
-    }
-
     private void makePayment(){
         SdkUIFlowBuilder.init()
                 .setContext(this)
@@ -161,22 +150,14 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
                 .buildSDK();
     }
 
-    private void clickPay(){
-        MidtransSDK.getInstance().setTransactionRequest(transactionRequest(itemDetails, jumlahtotal));
-        MidtransSDK.getInstance().startPaymentUiFlow(DetailSPPActivity.this);
-    }
 
     @NonNull
-    public static TransactionRequest transactionRequest(ArrayList<ItemDetails> itemDetails, int hargaTot){
-        TransactionRequest request =  new TransactionRequest(System.currentTimeMillis() + " " , hargaTot );
-        request.setCustomerDetails(customerDetails());
-        request.setItemDetails(itemDetails);
-        CreditCard creditCard = new CreditCard();
-        creditCard.setSaveCard(false);
-        creditCard.setAuthentication(CreditCard.RBA);
-
-        request.setCreditCard(creditCard);
-        return request;
+    public static CustomerDetails customerDetails(){
+        CustomerDetails cd = new CustomerDetails();
+        cd.setFirstName(sharedPreferences.getString("nama", null));
+        cd.setEmail(sharedPreferences.getString("email", null));
+        cd.setPhone(sharedPreferences.getString("no_hp", null));
+        return cd;
     }
 
     @Override

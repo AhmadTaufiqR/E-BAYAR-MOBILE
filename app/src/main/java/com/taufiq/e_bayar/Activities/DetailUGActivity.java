@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback;
@@ -29,17 +31,23 @@ import java.util.ArrayList;
 public class DetailUGActivity extends AppCompatActivity implements TransactionFinishedCallback {
 
     Toolbar toolbar;
+    TextView nama_detailUg;
     Button btn;
+    static SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_detail_ugactivity);
         toolbar = findViewById(R.id.toolbardetailUg);
+        nama_detailUg = findViewById(R.id.namaDetailUg);
         btn = findViewById(R.id.bayarUg);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        sharedPreferences = getSharedPreferences("Ebayar", MODE_PRIVATE);
+        String nama = sharedPreferences.getString("nama", "");
+        nama_detailUg.setText(nama);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

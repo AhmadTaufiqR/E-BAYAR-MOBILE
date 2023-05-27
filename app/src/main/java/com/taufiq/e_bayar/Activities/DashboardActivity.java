@@ -9,7 +9,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +33,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    TextView nama_header, nama_dashboard;
     CardView cardViewspp, cardViewug;
+    SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +49,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         toolbar = findViewById(R.id.toolbar);
         cardViewspp = findViewById(R.id.card_spp);
         cardViewug = findViewById(R.id.card_ug);
-
+        nama_dashboard = findViewById(R.id.nama_dash);
         setSupportActionBar(toolbar);
-
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.open_nav, R.string.close_nav);
@@ -54,6 +58,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         toggle.syncState();
         navigationView.setCheckedItem(R.id.Dashboard);
         navigationView.setNavigationItemSelectedListener(this);
+        nama_header = navigationView.getHeaderView(0).findViewById(R.id.nama_header);
+        sharedPreferences = getSharedPreferences("Ebayar", MODE_PRIVATE);
+        String nama = sharedPreferences.getString("nama", "");
+        nama_dashboard.setText(nama);
+        nama_header.setText(nama);
+
+
 
         cardViewspp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +97,17 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         switch (item.getItemId()) {
             case R.id.Dashboard:
                 break;
-            case R.id.Riwayat:
-                Toast.makeText(this, "Ini Riwayat", Toast.LENGTH_SHORT).show();
+            case R.id.Logout:
+                try {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.clear();
+                    editor.apply();
+                    startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+                    finish();
+                    Toast.makeText(this, "Anda Berhasil Logout", Toast.LENGTH_SHORT).show();
+                } catch (Exception t){
+                    Log.e("error", t.getLocalizedMessage());
+                }
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

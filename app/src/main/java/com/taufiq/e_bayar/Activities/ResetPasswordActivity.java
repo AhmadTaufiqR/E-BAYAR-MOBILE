@@ -23,6 +23,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ResetPasswordActivity.this,LoginActivity.class));
+                finish();
             }
         });
     }

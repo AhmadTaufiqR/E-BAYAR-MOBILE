@@ -30,6 +30,7 @@ public class ActivityInput_otp extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Kode Otp Benar",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(ActivityInput_otp.this, ResetPasswordActivity.class);
                     startActivity(intent);
+                    finish();
                 } else{
                     Toast.makeText(getApplicationContext(),"Kode Otp Salah",Toast.LENGTH_LONG).show();
                 }

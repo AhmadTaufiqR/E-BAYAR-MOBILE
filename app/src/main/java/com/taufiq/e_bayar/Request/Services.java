@@ -1,7 +1,5 @@
 package com.taufiq.e_bayar.Request;
 
-import com.taufiq.e_bayar.Utils.TagihanApi;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

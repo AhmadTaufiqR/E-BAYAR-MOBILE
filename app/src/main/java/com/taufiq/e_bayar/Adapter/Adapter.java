@@ -67,7 +67,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderSPP> {
                 total += (double) item.getJumlahBayar();
             }
         }
-        DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###.00");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###");
         String hasil = decimalFormat.format(total);
         textView.setText("Rp."+ hasil);
     }
