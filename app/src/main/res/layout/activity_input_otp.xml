@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ActivityInput_otp">
+    tools:context=".Activities.ActivityInput_otp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/dm_sans_bold"
-            android:text="RESET"
+            android:text="Verifikasi"
             android:textColor="@color/white"
             android:textSize="20dp">
         </TextView>
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/dm_sans_bold"
-            android:text="PASSWORD"
+            android:text="Kode"
             android:textColor="@color/white"
             android:textSize="20dp">
         </TextView>

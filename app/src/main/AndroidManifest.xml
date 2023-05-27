@@ -23,58 +23,29 @@
             android:name=".Activities.RiwayatActivity"
             android:exported="true" />
         <activity
-<<<<<<< HEAD
-            android:name=".ActivityInput_otp"
-            android:exported="true" />
-        <activity
-            android:name=".Activities.LupaSandiActivity"
+            android:name=".Activities.ActivityInput_otp"
             android:exported="true" />
         <activity
             android:name=".Activities.EditEmailActivity"
             android:exported="true" />
-=======
-            android:name=".Activities.EditTeleponActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activities.KodeVerifikasiActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activities.LupaSandiActivity"
-           android:exported="true" />
         <activity android:name=".Activities.ResetPasswordActivity"
-<<<<<<< HEAD
             android:exported="true"/>
-<!--        <activity android:name=".Activities.DashboardActivity"-->
-<!--            android:exported="true"/>-->
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name=".Activities.DashboardActivity"
             android:exported="true"/>
-=======
-            android:exported="false"/>
->>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
         <activity
             android:name=".Activities.LoginActivity"
             android:exported="true"
-            android:label="@string/app_name"
-<<<<<<< HEAD
-            android:theme="@style/Theme.EBAYAR.BlackColorIcon" />
-=======
-            android:theme="@style/Theme.EBAYAR.BlackColorIcon"></activity>
->>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
->>>>>>> b002094c47fcd75a25f3f7117dc9b65c3768e99c
+            android:label="@string/app_name" />
+
         <activity
-            android:name=".Activities.DashboardActivity"
+            android:name=".Activities.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-<<<<<<< HEAD
-
-=======
->>>>>>> 61f641e52fbd2c76558319d641740a4c7914150c
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity" />
     </application>
 
 </manifest>

@@ -7,20 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.taufiq.e_bayar.Model.ModelTagihan;
+
 import com.taufiq.e_bayar.R;
+import com.taufiq.e_bayar.Model.spp.DataItem;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.HolderSPP> {
-
+public class Adapter extends RecyclerView.Adapter<Adapter.HolderSPP> {
     Context context;
-    ArrayList<ModelTagihan> tagihan;
+    ArrayList<DataItem> tagihan;
     TextView textView;
-    public ArrayList<ModelTagihan> checkedmodelTagihan = new ArrayList<>();
+    public ArrayList<DataItem> checkedmodelTagihan = new ArrayList<>();
 
-    public MyAdapter(Context context, ArrayList<ModelTagihan> tagihan, TextView textView) {
+    public Adapter(Context context, ArrayList<DataItem> tagihan, TextView textView) {
         this.context = context;
         this.tagihan = tagihan;
         this.textView = textView;
@@ -28,17 +31,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.HolderSPP> {
 
     @NonNull
     @Override
-    public HolderSPP onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Adapter.HolderSPP onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_view_detail_spp, null);
-        return new HolderSPP(view);
+        return new Adapter.HolderSPP(view);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull HolderSPP holder, int position) {
-        ModelTagihan modelTagihan = tagihan.get(position);
+    public void onBindViewHolder(@NonNull Adapter.HolderSPP holder, int position) {
+        DataItem modelTagihan = tagihan.get(position);
         holder.bulan.setText(tagihan.get(position).getBulan());
-        holder.harga.setText(tagihan.get(position).getHarga().toString());
+        holder.harga.setText("Rp. "+ tagihan.get(position).getJumlahBayar());
         holder.checkBox.setOnCheckedChangeListener(null);
 
         //set change value when chaked
@@ -49,6 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.HolderSPP> {
                 updateTotal();
             } else {
                 checkedmodelTagihan.remove(tagihan.get(position));
+                updateTotal();
             }
 
         });
@@ -57,13 +61,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.HolderSPP> {
 
     @SuppressLint("SetTextI18n")
     private void updateTotal() {
-        int total = 0;
-        for (ModelTagihan item : tagihan) {
+        double total = 0;
+        for (DataItem item : tagihan) {
             if (item.isChecked()) {
-                total += item.getHarga();
+                total += (double) item.getJumlahBayar();
             }
         }
-        textView.setText("Rp."+total);
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###.00");
+        String hasil = decimalFormat.format(total);
+        textView.setText("Rp."+ hasil);
     }
 
     @Override

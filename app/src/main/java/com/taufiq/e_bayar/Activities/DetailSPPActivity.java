@@ -23,12 +23,19 @@ import com.midtrans.sdk.corekit.models.ItemDetails;
 import com.midtrans.sdk.corekit.models.snap.CreditCard;
 import com.midtrans.sdk.corekit.models.snap.TransactionResult;
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder;
-import com.taufiq.e_bayar.Adapter.MyAdapter;
+import com.taufiq.e_bayar.Adapter.Adapter;
 import com.taufiq.e_bayar.BuildConfig;
-import com.taufiq.e_bayar.Model.ModelTagihan;
 import com.taufiq.e_bayar.R;
+import com.taufiq.e_bayar.Request.Services;
+import com.taufiq.e_bayar.Utils.TagihanApi;
+import com.taufiq.e_bayar.Model.spp.DataItem;
+import com.taufiq.e_bayar.Model.spp.Tagihan;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailSPPActivity extends AppCompatActivity implements TransactionFinishedCallback {
     Toolbar toolbar;
@@ -38,9 +45,10 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
     StringBuffer jumlah;
     StringBuffer name;
     RecyclerView recyclerView;
-    MyAdapter myAdapter;
+    com.taufiq.e_bayar.Adapter.Adapter myAdapter;
     ArrayList<ItemDetails> itemDetails;
-    ArrayList<ModelTagihan> list;
+    ArrayList<DataItem> list;
+    TagihanApi tagihanApi;
     TextView totalamount;
     int jumlahtotal = 0;
 
@@ -56,6 +64,7 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
         btn = findViewById(R.id.bayarSpp);
         recyclerView = findViewById(R.id.recyclerSPP);
         totalamount = findViewById(R.id.totalSPP);
+        getAllTagihan();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,34 +74,50 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
                 id = new StringBuffer();
                 name = new StringBuffer();
                 itemDetails = new ArrayList<>();
-                    for (ModelTagihan mt : myAdapter.checkedmodelTagihan) {
-                         itemDetails.add(new ItemDetails(String.valueOf(mt.getId()), Double.valueOf(mt.getHarga()),
-                                 mt.getJumlah(), String.valueOf(mt.getBulan())));
-                        jumlahtotal += mt.getHarga();
-                    }
+                for (DataItem mt : myAdapter.checkedmodelTagihan) {
+                    itemDetails.add(new ItemDetails(String.valueOf(mt.getId()), (double) mt.getJumlahBayar(),
+                            mt.getQuantity(), String.valueOf(mt.getBulan())));
+                    jumlahtotal += mt.getJumlahBayar();
+                }
                 clickPay();
                 jumlahtotal=0;
             }
         });
 
-        myAdapter = new MyAdapter(getApplicationContext(), getTagihan(), totalamount);
-        recyclerView.setAdapter(myAdapter);
         makePayment();
     }
 
 
 
-    private ArrayList<ModelTagihan> getTagihan() {
-        list = new ArrayList<>();
-        ModelTagihan item = new ModelTagihan( "1", 300000, 1, "Februari");
-        ModelTagihan item1 = new ModelTagihan("2", 300000, 1, "Maret");
-        ModelTagihan item2 = new ModelTagihan("3", 300000, 1, "April");
 
-        list.add(item);
-        list.add(item1);
-        list.add(item2);
+    private void getAllTagihan() {
+        tagihanApi = Services.getRetrofit().create(TagihanApi.class);
+        Call<Tagihan> call = tagihanApi.getAllTagihan();
+        call.enqueue(new Callback<Tagihan>() {
+            @Override
+            public void onResponse(Call<Tagihan> call, Response<Tagihan> response) {
+                if (response.isSuccessful()) {
+                    Tagihan tagihanResponse = response.body();
+                    String massage = tagihanResponse.getMessage();
+                    int code = tagihanResponse.getCode();
+                    ArrayList<DataItem> siswaList = tagihanResponse.getData();
+                    list = new ArrayList<>();
+                    // Lakukan sesuatu dengan data siswa
+                    for (DataItem siswa : siswaList) {
+                        list.add(siswa);
+                    }
+                    myAdapter = new Adapter(getApplicationContext(), list, totalamount);
+                    recyclerView.setAdapter(myAdapter);
+                } else {
+                    Toast.makeText(DetailSPPActivity.this, "Gagal mendapatkan data siswa", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-        return list;
+            @Override
+            public void onFailure(Call<Tagihan> call, Throwable t) {
+                Toast.makeText(DetailSPPActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
