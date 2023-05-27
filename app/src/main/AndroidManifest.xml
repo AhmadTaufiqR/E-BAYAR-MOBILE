@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="E-BAYAR"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.EBAYAR"
         tools:replace="android:allowBackup">
