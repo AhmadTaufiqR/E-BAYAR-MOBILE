@@ -58,7 +58,8 @@
             app:pinLength="6"
             app:cursorVisible="false"
             app:forceKeyboard="true"
-            app:inputType="text"
+            app:inputType="number"
+            app:textSize="14sp"
             app:password="false"/>
 
         <Button

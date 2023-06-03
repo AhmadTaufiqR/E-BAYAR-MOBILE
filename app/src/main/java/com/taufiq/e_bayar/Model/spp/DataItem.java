@@ -19,9 +19,6 @@ public class DataItem{
 	@SerializedName("id")
 	private int id;
 
-	@SerializedName("akhir_bayar")
-	private String akhirBayar;
-
 	@SerializedName("tipe")
 	private String tipe;
 
@@ -77,14 +74,6 @@ public class DataItem{
 
 	public int getId(){
 		return id;
-	}
-
-	public void setAkhirBayar(String akhirBayar){
-		this.akhirBayar = akhirBayar;
-	}
-
-	public String getAkhirBayar(){
-		return akhirBayar;
 	}
 
 	public void setTipe(String tipe){

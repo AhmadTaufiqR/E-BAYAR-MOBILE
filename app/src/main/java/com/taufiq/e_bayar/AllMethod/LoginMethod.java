@@ -15,6 +15,7 @@ import com.taufiq.e_bayar.Request.Services;
 import com.taufiq.e_bayar.Utils.ApiMethod;
 
 import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,21 +27,23 @@ public class LoginMethod {
 
     public void getUserLogin(TextView txtemail, TextView txtpassword, Context context, SharedPreferences sharedPreferences) {
         apiMethod = Services.getRetrofit().create(ApiMethod.class);
-        Data dataUser = new Data(txtemail.getText().toString(), txtpassword.getText().toString());
-        Call<User> call = apiMethod.login(dataUser);
+        String username = txtemail.getText().toString().trim();
+//        Log.e("tag", username);
+//        Data dataUser = new Data();
+        Call<User> call = apiMethod.login(username, txtpassword.getText().toString());
 
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     User userResponse = response.body();
+                    Data data = userResponse.getData();
                     Toast.makeText(context, "Anda Berhasil Login", Toast.LENGTH_LONG).show();
 
-//                     Simpan data ke dalam SharedPreferences
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("nama", userResponse.getData().getNama());
-                    editor.putString("email", userResponse.getData().getEmail());
-                    editor.putString("no_hp", userResponse.getData().getNoTelephone());
+                    editor.putString("nama", data.getNama());
+                    editor.putString("email", data.getEmail());
+                    editor.putString("no_hp", data.getNoTelephone());
                     editor.apply();
 
                     context.startActivity(new Intent(context, DashboardActivity.class));

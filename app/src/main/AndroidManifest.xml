@@ -20,9 +20,6 @@
             android:name=".Activities.DetailSPPActivity"
             android:exported="true" />
         <activity
-            android:name=".Activities.RiwayatActivity"
-            android:exported="true" />
-        <activity
             android:name=".Activities.ActivityInput_otp"
             android:exported="true" />
         <activity

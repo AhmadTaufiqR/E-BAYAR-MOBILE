@@ -1,33 +1,37 @@
 package com.taufiq.e_bayar.Activities;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback;
-import com.midtrans.sdk.corekit.core.MidtransSDK;
-import com.midtrans.sdk.corekit.core.TransactionRequest;
 import com.midtrans.sdk.corekit.core.themes.CustomColorTheme;
 import com.midtrans.sdk.corekit.models.CustomerDetails;
 import com.midtrans.sdk.corekit.models.ItemDetails;
-import com.midtrans.sdk.corekit.models.snap.CreditCard;
 import com.midtrans.sdk.corekit.models.snap.TransactionResult;
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder;
 import com.taufiq.e_bayar.Adapter.Adapter;
 import com.taufiq.e_bayar.AllMethod.DetailSPPMethod;
 import com.taufiq.e_bayar.BuildConfig;
+import com.taufiq.e_bayar.Model.ModelTahun.DataTahun;
+import com.taufiq.e_bayar.Model.ModelTahun.ModelTahun;
 import com.taufiq.e_bayar.R;
 import com.taufiq.e_bayar.Request.Services;
 import com.taufiq.e_bayar.Utils.ApiMethod;
@@ -35,6 +39,7 @@ import com.taufiq.e_bayar.Model.spp.DataItem;
 import com.taufiq.e_bayar.Model.spp.Tagihan;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,7 +49,7 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
     Toolbar toolbar;
     Button btn;
     RecyclerView recyclerView;
-    com.taufiq.e_bayar.Adapter.Adapter myAdapter;
+    Adapter myAdapter;
     ArrayList<ItemDetails> itemDetails;
     ArrayList<DataItem> list;
     ApiMethod tagihanApiMethod;
@@ -52,6 +57,10 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
     int jumlahtotal = 0;
     static SharedPreferences sharedPreferences;
     DetailSPPMethod detailSPPMethod;
+    AutoCompleteTextView completeTextView;
+    ArrayAdapter<String> adapter;
+    ArrayList<String> dataDropdown;
+    String selectedTahun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +75,22 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
         btn = findViewById(R.id.bayarSpp);
         recyclerView = findViewById(R.id.recyclerSPP);
         totalamount = findViewById(R.id.totalSPP);
+        completeTextView = findViewById(R.id.auto_complite_text);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, new ArrayList<>());
         sharedPreferences = getSharedPreferences("Ebayar", MODE_PRIVATE);
         String nama = sharedPreferences.getString("nama", "");
         detailName.setText(nama);
         detailSPPMethod = new DetailSPPMethod();
-        getAllTagihan();
+        getTahunSpp();
+
+        completeTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedTahun = (String) parent.getItemAtPosition(position);
+                int tahun = Integer.parseInt(selectedTahun);
+                getAllTagihan(tahun);
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,33 +102,34 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
                     jumlahtotal += mt.getJumlahBayar();
                 }
                 detailSPPMethod.clickPay(itemDetails, jumlahtotal, getApplicationContext());
-                jumlahtotal=0;
+                jumlahtotal = 0;
             }
         });
 
         makePayment();
     }
 
-    private void getAllTagihan() {
+    private void getAllTagihan(int tahun) {
         tagihanApiMethod = Services.getRetrofit().create(ApiMethod.class);
-        Call<Tagihan> call = tagihanApiMethod.getAllTagihan();
+        Call<Tagihan> call = tagihanApiMethod.getTagihanSPP(tahun);
         call.enqueue(new Callback<Tagihan>() {
             @Override
             public void onResponse(Call<Tagihan> call, Response<Tagihan> response) {
-                if (response.isSuccessful()) {
-                    Tagihan tagihanResponse = response.body();
-                    String massage = tagihanResponse.getMessage();
-                    int code = tagihanResponse.getCode();
-                    ArrayList<DataItem> siswaList = tagihanResponse.getData();
-                    list = new ArrayList<>();
-                    // Lakukan sesuatu dengan data siswa
-                    for (DataItem siswa : siswaList) {
-                        list.add(siswa);
+                try {
+                    if (response.isSuccessful()) {
+                        Tagihan tagihanResponse = response.body();
+                        String message = tagihanResponse.getMessage();
+                        int code = tagihanResponse.getCode();
+                        ArrayList<DataItem> siswaList = tagihanResponse.getData();
+                        list = new ArrayList<>();
+                        for (DataItem siswa : siswaList) {
+                            list.add(siswa);
+                        }
+                        myAdapter = new Adapter(getApplicationContext(), list, totalamount);
+                        recyclerView.setAdapter(myAdapter);
                     }
-                    myAdapter = new Adapter(getApplicationContext(), list, totalamount);
-                    recyclerView.setAdapter(myAdapter);
-                } else {
-                    Toast.makeText(DetailSPPActivity.this, "Gagal mendapatkan data siswa", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Log.e(TAG, "onResponse: " + e.getLocalizedMessage());
                 }
             }
 
@@ -119,6 +140,33 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
         });
     }
 
+    private void getTahunSpp() {
+        tagihanApiMethod = Services.getRetrofit().create(ApiMethod.class);
+        Call<ModelTahun> call = tagihanApiMethod.getTahunTagihan();
+        call.enqueue(new Callback<ModelTahun>() {
+            @Override
+            public void onResponse(Call<ModelTahun> call, Response<ModelTahun> response) {
+                if (response.isSuccessful()) {
+                    ModelTahun tagihanResponse = response.body();
+                    List<DataTahun> tahunList = tagihanResponse.getData();
+                    dataDropdown = new ArrayList<>();
+                    for (DataTahun item : tahunList) {
+                        dataDropdown.add(item.getTahun());
+                    }
+                    adapter.clear();
+                    adapter.addAll(dataDropdown);
+                    completeTextView.setAdapter(adapter);
+                } else {
+                    Toast.makeText(DetailSPPActivity.this, "Data Tidak Ditemukan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelTahun> call, Throwable t) {
+                Toast.makeText(DetailSPPActivity.this, "Data error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -139,20 +187,19 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
         finish();
     }
 
-    private void makePayment(){
+    private void makePayment() {
         SdkUIFlowBuilder.init()
                 .setContext(this)
                 .setMerchantBaseUrl(BuildConfig.BASE_URL)
                 .setClientKey(BuildConfig.CLIENT_KEY)
                 .setTransactionFinishedCallback(this)
                 .enableLog(true)
-                .setColorTheme(new CustomColorTheme("#010C42","#010C42" , "#3f0d0d"))
+                .setColorTheme(new CustomColorTheme("#010C42", "#010C42", "#3f0d0d"))
                 .buildSDK();
     }
 
-
     @NonNull
-    public static CustomerDetails customerDetails(){
+    public static CustomerDetails customerDetails() {
         CustomerDetails cd = new CustomerDetails();
         cd.setFirstName(sharedPreferences.getString("nama", null));
         cd.setEmail(sharedPreferences.getString("email", null));
@@ -162,8 +209,8 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
 
     @Override
     public void onTransactionFinished(TransactionResult result) {
-        if(result.getResponse() != null){
-            switch (result.getStatus()){
+        if (result.getResponse() != null) {
+            switch (result.getStatus()) {
                 case TransactionResult.STATUS_SUCCESS:
                     Toast.makeText(this, "Transaction Berhasil " + result.getResponse().getTransactionId(), Toast.LENGTH_LONG).show();
                     break;
@@ -175,15 +222,14 @@ public class DetailSPPActivity extends AppCompatActivity implements TransactionF
                     break;
             }
             result.getResponse().getStatusMessage();
-        }else if(result.isTransactionCanceled()){
+        } else if (result.isTransactionCanceled()) {
             Toast.makeText(this, "Transaction Failed", Toast.LENGTH_LONG).show();
-        }else{
-            if(result.getStatus().equalsIgnoreCase((TransactionResult.STATUS_INVALID))){
+        } else {
+            if (result.getStatus().equalsIgnoreCase((TransactionResult.STATUS_INVALID))) {
                 Toast.makeText(this, "Transaction Invalid" + result.getResponse().getTransactionId(), Toast.LENGTH_LONG).show();
-            }else{
+            } else {
                 Toast.makeText(this, "Something Wrong", Toast.LENGTH_LONG).show();
             }
         }
     }
-
 }

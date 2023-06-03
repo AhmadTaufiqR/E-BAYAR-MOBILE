@@ -43,11 +43,6 @@ public class Data{
 	@SerializedName("username")
 	private String username;
 
-	public Data(String password, String username) {
-		this.password = password;
-		this.username = username;
-	}
-
 	public void setIdAngkatan(int idAngkatan){
 		this.idAngkatan = idAngkatan;
 	}
@@ -136,9 +131,7 @@ public class Data{
 		return id;
 	}
 
-	public void setEmail(String email){
-		this.email = email;
-	}
+	public void setEmail(String email){ this.email = email; }
 
 	public String getEmail(){
 		return email;
